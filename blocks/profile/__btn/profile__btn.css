@@ -1,0 +1,9 @@
+.profile__btn {
+  cursor: pointer;
+  align-self: center;
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-sizing: border-box;
+  padding: 0;
+}

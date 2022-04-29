@@ -1,0 +1,19 @@
+.profile__btn_add {
+  background-image: url(../../../../images/vector-add.png);
+  width: 150px;
+  height: 50px;
+  border: 2px solid #FFF;
+}
+  
+@media screen and (min-width: 460px) and (max-width: 767px) {
+  .profile__btn_add {
+    width: 282px;
+    max-width: calc(((100vw - 460px) * (40 / 308)) + 110px);
+  }
+}
+  
+@media screen and (max-width: 459px) {
+  .profile__btn_add {
+    width: 282px;
+  }
+}

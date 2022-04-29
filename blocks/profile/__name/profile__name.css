@@ -1,0 +1,28 @@
+.profile__name {
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) and (max-width: 880px) {
+  .profile__name {
+    font-size: calc(((100vw - 768px) * (15 / 112)) + 27px);
+    line-height: calc(((100vw - 768px) * (15 / 112)) + 33px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .profile__name {
+    font-size: 27px;
+    line-height: 40px;
+  }
+}
+
+@media screen and (max-width: 459px) {
+  .profile__name {
+    margin: 26px 0 0 25px;
+    line-height: 1;
+  }
+}

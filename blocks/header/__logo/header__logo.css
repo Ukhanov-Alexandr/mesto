@@ -1,0 +1,30 @@
+.logo {
+  width: 142px;
+  height: 33px;
+}
+
+@media screen and (min-width: 878px) and (max-width: 950px) {
+  .logo {
+    padding-left: calc(((100vw - 878px) * (-27 / 72)) + 27px);
+  }
+}
+
+@media screen and (max-width: 877px) {
+  .logo {
+    padding-left: 27px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .logo {
+    width: calc(((100vw - 320px) * (38 / 448)) + 104px);
+    height: calc(((100vw - 320px) * (8 / 448)) + 25px);
+  }
+}
+
+@media screen and (max-width: 319px) {
+  .logo {
+    width: 104px;
+    height: 25px;
+  }
+}
