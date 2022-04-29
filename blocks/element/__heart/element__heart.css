@@ -1,4 +1,9 @@
 .element__heart {
   margin: 30px 20px 0 31px;
   min-width: 22px;
+  cursor: pointer;
+}
+
+.element__heart:hover {
+  opacity: .6;
 }
