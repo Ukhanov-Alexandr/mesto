@@ -20,14 +20,14 @@
               src="./images/avatar.png"
               alt="Cousteau"/>
             <div class="profile__info">
-              <h1 class="profile__name">
-                Жак-Ив Кусто<button
-                  class="profile__btn profile__btn_edit"></button>
-              </h1>
+              <div class="profile__name-edit-wraper">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button class="profile__btn profile__btn_edit" type="button"></button>
+              </div>
               <p class="profile__position">Исследователь океана</p>
             </div>
           </div>
-          <button class="profile__btn profile__btn_add"></button>
+          <button class="profile__btn profile__btn_add" type="button"></button>
         </section>
         <div class="content">
           <section class="elements">
@@ -162,14 +162,15 @@
     </div>
 
     <div class="popup">
-      <div class="popup__container">
-        <button class="popup__btn-close"></button>
+      <form class="popup__container">
+        <button class="popup__btn-close" type="button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
         <input class="popup__name" type="text" placeholder="Имя">
         <input class="popup__position" type="text" placeholder="О себе">
         <button class="popup__btn-save"><span>Сохранить</span></button>
-      </div>
+      </form>
     </div>
 
+    <script src="./script.js"></script>
   </body>
 </html>

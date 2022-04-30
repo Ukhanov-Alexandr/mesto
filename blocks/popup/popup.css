@@ -1,6 +1,5 @@
 .popup {
-  /* display: none; */
-  display:  flex;
+  display: none;
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -18,8 +17,13 @@
   }
 }
 
+.popup_opened {
+  display: flex;
+}
 
+/* .popup__input {
 
+} */
 
 
 
@@ -117,8 +121,8 @@
   margin: 54px 0 0 0;
   border: 0;
   color: #000;
-  border-bottom: 1px solid #000000;
-  opacity: 0.2;
+  border-bottom: 1px solid #00000020;
+  /* opacity: 0.2; */
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
@@ -138,8 +142,8 @@
   margin: 30px 0 0 0;
   border: 0;
   color: #000;
-  border-bottom: 1px solid #000000;
-  opacity: 0.2;
+  border-bottom: 1px solid #00000020;
+  /* opacity: 0.2; */
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
