@@ -5,10 +5,10 @@ const popupCloseBtn = document.querySelector(".popup__btn-close");
 const popupSaveBtn = document.querySelector(".popup__btn-save");
 
 let popupName = document.querySelector(".profile__name");
-let popupPosition = document.querySelector(".profile__position");
+let popupAbout = document.querySelector(".profile__about");
 
 let inputName = document.querySelector(".popup__name");
-let inputPosition = document.querySelector(".popup__position");
+let inputAbout = document.querySelector(".popup__about");
 
 
 function popupToggle () {
@@ -18,7 +18,7 @@ function popupToggle () {
 popupOpenBtn.addEventListener("click", function() {
     popupToggle ()
     inputName.value = popupName.textContent;
-    inputPosition.value = popupPosition.textContent;
+    inputAbout.value = popupAbout.textContent;
 });
 
 popupCloseBtn.addEventListener("click", function() {
@@ -28,6 +28,6 @@ popupCloseBtn.addEventListener("click", function() {
 popupForm.addEventListener("submit", function(evt) {
     evt.preventDefault();
     popupName.textContent = inputName.value;
-    popupPosition.textContent = inputPosition.value;
+    popupAbout.textContent = inputAbout.value;
     popupToggle ()
 });

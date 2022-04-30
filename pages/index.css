@@ -2,31 +2,34 @@
 @import url(../fonts/fonts.css);
 @import url(../blocks/root/root.css);
 @import url(../blocks/page/page.css);
-
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/main/main.css);
-
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__column/profole__column.css);
 @import url(../blocks/profile/__avatar/profole__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name-edit-wraper/profile__name-edit-wraper.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__btn/profile__btn.css);
 @import url(../blocks/profile/__btn/_edit/profile__btn_edit.css);
 @import url(../blocks/profile/__btn/_add/profile__btn_add.css);
-@import url(../blocks/profile/__position/profile__position.css);
-
+@import url(../blocks/profile/__about/profile__about.css);
 @import url(../blocks/content/content.css);
-
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__img/element__img.css);
 @import url(../blocks/element/__box/element__box.css);
 @import url(../blocks/element/__caption/element__caption.css);
 @import url(../blocks/element/__heart/element__heart.css);
-
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/copyright/copyright.css);
-
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__form-wraper/popup__form-wraper.css);
+@import url(../blocks/popup/__btn-close/popup__btn-close.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__name/popup__name.css);
+@import url(../blocks/popup/__about/popup__about.css);
+@import url(../blocks/popup/__btn-save/popup__btn-save.css);

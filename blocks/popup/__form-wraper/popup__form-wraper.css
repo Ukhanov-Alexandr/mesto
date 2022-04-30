@@ -1,0 +1,9 @@
+.popup__form-wraper {
+max-width: 358px;
+}
+  
+@media screen and (max-width: 767px) {
+  .popup__form-wraper {
+    max-width: calc(((100vw - 320px) * (120 / 448)) + 238px);
+  }
+}
