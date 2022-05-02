@@ -1,8 +1,20 @@
 .profile {
-  max-width: 100%;
+  width: 100%;
   padding: 40px 0 40px;
   display: flex;
   justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) and (max-width: 950px) {
+  .profile {
+    width: calc(((100vw - 768px) * (216 / 182)) + 664px);
+  }
+}
+
+@media screen and (min-width: 460px) and (max-width: 767px) {
+  .profile {
+    width: calc(((100vw - 460px) * (267 / 308)) + 397px);
+  }
 }
 
 @media screen and (max-width: 459px) {

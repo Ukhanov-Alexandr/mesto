@@ -1,6 +1,5 @@
 .elements {
-  max-width: 100%;
-  /* min-height: 744px; */
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -8,10 +7,18 @@
   justify-items: center;
 }
 
+@media screen and (min-width: 768px) and (max-width: 950px) {
+  .elements {
+    width: calc(((100vw - 768px) * (200 / 182)) + 680px);
+  }
+}
+
+
 @media screen and (min-width: 460px) and (max-width: 767px) {
   .elements {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(auto, 1fr);
+    width: calc(((100vw - 460px) * (168 / 308)) + 413px);
   }
 }
 

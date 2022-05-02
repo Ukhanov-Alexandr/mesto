@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mesto</title>
+    <title>Место</title>
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="root">
@@ -17,110 +17,107 @@
           <div class="profile__column">
             <img
               class="profile__avatar"
-              src="./images/avatar.png"
+              src="./images/cousteau.jpg"
               alt="Cousteau"
             />
             <div class="profile__info">
               <div class="profile__name-edit-wraper">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <button
-                  class="profile__btn profile__btn_edit"
-                  type="button"
-                ></button>
+                <button class="profile__btn profile__btn_type_edit" type="button" aria-label="Редактировать"></button>
               </div>
               <p class="profile__about">Исследователь океана</p>
             </div>
           </div>
-          <button class="profile__btn profile__btn_add" type="button"></button>
+          <button class="profile__btn profile__btn_type_add" type="button" aria-label="Добавить"></button>
         </section>
-        <div class="content">
-          <section class="elements">
-            <div class="element">
+
+        <section class="elements">
+            <article class="element">
               <img
                 class="element__img"
-                src="./images/kirill-pershin-1088404-unsplash.png"
-                alt="Picture"
+                src="./images/rocky-shore.jpg"
+                alt="Скалистый берег"
               />
               <div class="element__box">
-                <p class="element__caption">Карачаевск</p>
-                <button class="element__btn-heart" type="button"></button>
+                <h2 class="element__caption">Скалистый берег</h2>
+                <button class="element__btn-heart" type="button" aria-label="like"></button>
               </div>
-            </div>
-            <div class="element">
+            </article>
+            <article class="element">
               <img
                 class="element__img"
-                src="./images/kirill-pershin-1404681-unsplash.png"
-                alt="Picture"
+                src="./images/tree-shadow.jpg"
+                alt="Дерево силуэт"
               />
               <div class="element__box">
-                <p class="element__caption">Карачаево-Черкесия</p>
-                <button class="element__btn-heart" type="button"></button>
+                <h2 class="element__caption">Дерево силуэт</h2>
+                <button class="element__btn-heart" type="button" aria-label="like"></button>
               </div>
-            </div>
-            <div class="element">
+            </article>
+            <article class="element">
               <img
                 class="element__img"
-                src="./images/kirill-pershin-1556355-unsplash.png"
-                alt="Picture"
+                src="./images/canyon.jpg"
+                alt="Река в каньоне"
               />
               <div class="element__box">
-                <p class="element__caption">Карачаевск</p>
-                <button class="element__btn-heart" type="button"></button>
+                <h2 class="element__caption">Река в каньоне</h2>
+                <button class="element__btn-heart" type="button" aria-label="like"></button>
               </div>
-            </div>
-            <div class="element">
+            </article>
+            <article class="element">
               <img
                 class="element__img"
-                src="./images/kirill-pershin-1404681-unsplash.png"
-                alt="Picture"
+                src="./images/basket.jpg"
+                alt="Каменистый берег"
               />
               <div class="element__box">
-                <p class="element__caption">Карачаево-Черкесия</p>
-                <button class="element__btn-heart" type="button"></button>
+                <h2 class="element__caption">Каменистый берег</h2>
+                <button class="element__btn-heart" type="button" aria-label="like"></button>
               </div>
-            </div>
-            <div class="element">
+            </article>
+            <article class="element">
               <img
                 class="element__img"
-                src="./images/kirill-pershin-1556355-unsplash.png"
-                alt="Picture"
+                src="./images/sunlight.jpg"
+                alt="Корзина"
               />
               <div class="element__box">
-                <p class="element__caption">Карачаевск</p>
-                <button class="element__btn-heart" type="button"></button>
+                <h2 class="element__caption">Корзина</h2>
+                <button class="element__btn-heart" type="button" aria-label="like"></button>
               </div>
-            </div>
-            <div class="element">
+            </article>
+            <article class="element">
               <img
                 class="element__img"
-                src="./images/kirill-pershin-1088404-unsplash.png"
-                alt="Picture"
+                src="./images/no-parkin.jpg"
+                alt="Пальма"
               />
               <div class="element__box">
-                <p class="element__caption">Карачаевск</p>
-                <button class="element__btn-heart" type="button"></button>
+                <h2 class="element__caption">Пальма</h2>
+                <button class="element__btn-heart" type="button" aria-label="like"></button>
               </div>
-            </div>
-          </section>
-        </div>
+            </article>
+        </section>
+
       </main>
-      <div class="footer-container">
-        <footer class="footer">
-          <p class="copyright">© 2022 Mesto Russia</p>
-        </footer>
-      </div>
+
+      <footer class="footer">
+        <p class="footer__copyright">© 2022 Mesto Russia</p>
+      </footer>
+
     </div>
     <div class="popup">
-      <form class="popup__container">
-        <div class="popup__form-wraper">
-          <button class="popup__btn-close" type="button"></button>
-          <h3 class="popup__title">Редактировать профиль</h3>
-          <input class="popup__name" type="text" placeholder="Имя" />
-          <input class="popup__about" type="text" placeholder="О себе" />
-          <button class="popup__btn-save"><span>Сохранить</span></button>
-        </div>
-      </form>
+      <div class="popup__container">
+        <button class="popup__btn-close" type="button"></button>
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form class="popup__form" name="profile-form">
+          <input class="popup__input popup__input_type_name" name="profile-name" type="text" placeholder="Имя" />
+          <input class="popup__input popup__input_type_about" name="profile-about" type="text" placeholder="О себе" />
+          <button class="popup__btn-save" type="submit">Сохранить</button>
+        </form>
+      </div>
     </div>
-    <script src="./script.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

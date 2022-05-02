@@ -1,18 +1,20 @@
-.profile__btn_add {
-  background-image: url(../../../../images/vector-add.png);
+.profile__btn_type_add {
+  background-image: url(../../../../images/button-add.svg);
   min-width: 150px;
   min-height: 50px;
   border: 2px solid #FFF;
+  border-radius: 2px;
+  background-size: auto;
 }
-  
+    
 @media screen and (min-width: 460px) and (max-width: 767px) {
-  .profile__btn_add {
+  .profile__btn_type_add {
     min-width: calc(((100vw - 460px) * (40 / 308)) + 110px);
   }
 }
-  
+    
 @media screen and (max-width: 459px) {
-  .profile__btn_add {
+  .profile__btn_type_add {
     min-width: 282px;
   }
 }

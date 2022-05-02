@@ -1,6 +1,6 @@
 .element__caption {
   color: #000;
-  font-family: 'Inter';
+  font-family: 'Inter', 'Arial', sans-serif;
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
