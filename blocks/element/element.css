@@ -1,21 +1,9 @@
 .element {
-  width: 282px;
-  min-height: 362px;
+  max-width: 282px;
+  height: 362px;
   background-color: #fff;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-}
-
-@media screen and (min-width: 768px) and (max-width: 950px) {
-  .element {
-    width: calc(((100vw - 768px) * (67 / 182)) + 215px);
-    max-height: calc(((100vw - 768px) * (62 / 182)) + 300px);
-  }
-}
-
-@media screen and (min-width: 460px) and (max-width: 767px) {
-  .element {
-    width: calc(((100vw - 460px) * (84 / 308)) + 198px);
-  }
+  align-items: center;
 }

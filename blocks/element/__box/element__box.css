@@ -1,5 +1,7 @@
 .element__box {
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 25px 20px 32px 21px;
   box-sizing: border-box;
 }

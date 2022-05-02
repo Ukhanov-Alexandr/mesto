@@ -1,25 +1,39 @@
 .profile {
   width: 100%;
-  padding: 40px 0 40px;
-  display: flex;
-  justify-content: space-between;
+  padding: 40px 0 50px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: auto auto 24px 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "profile__avatar profile__name profile__btn_type_edit profile__btn_type_add"
+    "profile__avatar profile__about profile__about profile__btn_type_add";
 }
 
-@media screen and (min-width: 768px) and (max-width: 950px) {
+.profile__about { grid-area: profile__about; }
+.profile__avatar { grid-area: profile__avatar; }
+.profile__name { grid-area: profile__name; }
+.profile__btn_type_edit { grid-area: profile__btn_type_edit; }
+.profile__btn_type_add { grid-area: profile__btn_type_add; }
+
+@media screen and (max-width: 900px) {
   .profile {
-    width: calc(((100vw - 768px) * (216 / 182)) + 664px);
+    padding-left: 19px;
+    padding-right: 19px;
   }
 }
 
-@media screen and (min-width: 460px) and (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .profile {
-    width: calc(((100vw - 460px) * (267 / 308)) + 397px);
-  }
-}
-
-@media screen and (max-width: 459px) {
-  .profile {
-    flex-direction: column;
     padding-top: 42px;
+    padding-bottom: 36px;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto auto; 
+    grid-template-areas:
+      "profile__avatar profile__avatar"
+      "profile__name profile__btn_type_edit"
+      "profile__about profile__about"
+      "profile__btn_type_add profile__btn_type_add";
   }
 }

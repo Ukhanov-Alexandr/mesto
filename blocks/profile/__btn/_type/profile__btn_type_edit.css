@@ -1,33 +1,21 @@
 .profile__btn_type_edit {
   background-image: url(../../../../images/button-edit.svg);
-  min-width: 24px;
-  min-height: 24px;
+  width: 24px;
+  height: 24px;
   border: none;
   border: 1px solid #FFF;
+  align-self: flex-end;
+  margin-bottom: 9px;
   margin-left: 18px;
-  margin-top: 6px;
+  box-sizing: border-box;
 }
-    
-@media screen and (min-width: 768px) and (max-width: 950px) {
-  .profile__btn_type_edit {
-    min-width: calc(((100vw - 768px) * (6 / 182)) + 18px);
-    min-height: calc(((100vw - 768px) * (6 / 182)) + 18px);
-    margin-top: calc(((100vw - 768px) * (4 / 182)) + 2px);
-  }
-}
-  
+
 @media screen and (max-width: 767px) {
   .profile__btn_type_edit {
-    min-width: 18px;
-    min-height: 18px;
-    margin-top: 2px;
-  }
-}
-    
-@media screen and (max-width: 459px) {
-  .profile__btn_type_edit {
+    width: 18px;
+    height: 18px;
     margin-left: 10px;
-    margin-top: 29px;
+    margin-bottom: 22px;
     background-size: 7.5px auto;
   }
 }

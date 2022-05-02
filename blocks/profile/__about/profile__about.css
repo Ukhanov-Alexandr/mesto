@@ -2,51 +2,24 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  margin: 0;
-  max-width: 500px;
+  margin: 16px 0 0 0;
+  max-width: 370px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 
-@media screen and (min-width: 661px) and (max-width: 950px) {
-  .profile__about {
-    max-width: calc(((100vw - 660px) * (290 / 290)) + 210px);
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 880px) {
-  .profile__about {
-    font-size: calc(((100vw - 768px) * (4 / 112)) + 14px);
-    line-height: calc(((100vw - 768px) * (5 / 112)) + 17px);
-  }
-}
-
 @media screen and (max-width: 767px) {
   .profile__about {
+    justify-self: center;
+    margin: 0 0 36px 0;
     font-size: 14px;
     line-height: 17px;
   }
 }
 
-@media screen and (min-width: 460px) and (max-width: 660px) {
+@media screen and (max-width: 500px) {
   .profile__about {
-    max-width: calc(((100vw - 460px) * (150 / 200)) + 210px);
-  }
-}
-
-@media screen and (min-width: 460px) and (max-width: 660px) {
-  .profile__about {
-    text-align: start;
-    line-height: 1;
-  }
-}
-
-@media screen and (max-width: 459px) {
-  .profile__about {
-    text-align: center;
-    margin: 14px 0 36px 25px;
-    line-height: 1;
-    max-width: 282px;
+    max-width: 250px;
   }
 }
