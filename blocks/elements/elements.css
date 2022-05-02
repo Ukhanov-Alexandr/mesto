@@ -13,11 +13,9 @@
   }
 }
 
-
 @media screen and (min-width: 460px) and (max-width: 767px) {
   .elements {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(auto, 1fr);
+    grid-template-columns: 1fr 1fr;
     width: calc(((100vw - 460px) * (168 / 308)) + 413px);
   }
 }
@@ -25,6 +23,6 @@
 @media screen and (max-width: 459px) {
   .elements {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(auto, 1fr);
   }
 }
+

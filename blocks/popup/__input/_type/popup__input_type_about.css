@@ -1,9 +1,0 @@
-.popup__input_type_about {
-  margin: 0 0 48px;
-}
-  
-@media screen and (max-width: 767px) {
-  .popup__input_type_about  {
-    margin-bottom: calc(((100vw - 320px) * (3 / 448)) + 45px);
-  }
-}
