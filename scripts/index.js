@@ -67,7 +67,6 @@ function cardCreate (title, link) {
     imageView.alt = `Фото ${title}`;
     imageCaption.textContent = title;
   });
-  
   trash.addEventListener("click", () => card.remove());
   return card;
 }
