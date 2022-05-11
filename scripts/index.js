@@ -85,11 +85,11 @@ initialCards.forEach((item) => {
 
 const popupAdd = document.querySelector(".popup-add");
 const btnAdd = document.querySelector(".profile__btn_type_add");
-const btnCloseAdd = popupAdd.querySelector(".popup__btn-close");
-const popupFormAdd =  popupAdd.querySelector(".popup__form");
-const inputCaption = popupAdd.querySelector(".popup__input_type_caption");
-const inputLink = popupAdd.querySelector(".popup__input_type_link");
-const btnSaveAdd = popupAdd.querySelector(".popup__btn-save");
+const btnCloseAdd = popupAdd.querySelector(".popup-add__btn-close");
+const popupFormAdd =  popupAdd.querySelector(".popup-add__form");
+const inputCaption = popupAdd.querySelector(".popup-add__input_type_caption");
+const inputLink = popupAdd.querySelector(".popup-add__input_type_link");
+const btnSaveAdd = popupAdd.querySelector(".popup-add__btn-save");
 
 
 function popupAddToggle () {
