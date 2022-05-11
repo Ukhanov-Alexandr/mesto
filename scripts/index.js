@@ -67,7 +67,7 @@ function cardCreate (title, link) {
     imageView.alt = `Фото ${title}`;
     imageCaption.textContent = title;
   });
-  buttonClosePopupImage.addEventListener("click", () => popupClose(popupImage));
+  
   trash.addEventListener("click", () => card.remove());
   return card;
 }
@@ -90,3 +90,4 @@ function addtHandler (evt) {
 buttonAdd.addEventListener("click", () => popupOpen(popupAdd));
 buttonCloseAdd.addEventListener("click", () => popupClose(popupAdd));
 popupFormAdd.addEventListener("submit", addtHandler);
+buttonClosePopupImage.addEventListener("click", () => popupClose(popupImage));
