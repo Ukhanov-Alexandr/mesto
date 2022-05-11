@@ -20,7 +20,7 @@
 .popup__input:nth-child(2) {
   margin: 0 0 48px;
 }
-  
+
 @media screen and (max-width: 767px) {
   .popup__input:nth-child(2) {
     margin-bottom: calc(((100vw - 320px) * (3 / 448)) + 45px);
