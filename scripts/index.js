@@ -41,7 +41,6 @@ const buttonCloseAdd = popupAdd.querySelector(".popup-add__btn-close");
 const popupFormAdd =  popupAdd.querySelector(".popup-add__form");
 const inputCaption = popupAdd.querySelector(".popup-add__input_type_caption");
 const inputLink = popupAdd.querySelector(".popup-add__input_type_link");
-const buttonSaveAdd = popupAdd.querySelector(".popup-add__btn-save");
 const popupImage = document.querySelector(".popup-image");
 const buttonClosePopupImage = popupImage.querySelector(".popup-image__btn-close");
 const imageView = popupImage.querySelector(".popup-image__image");
@@ -90,4 +89,4 @@ function addtHandler (evt) {
 
 buttonAdd.addEventListener("click", () => popupOpen(popupAdd));
 buttonCloseAdd.addEventListener("click", () => popupClose(popupAdd));
-buttonSaveAdd.addEventListener("click", addtHandler);
+popupFormAdd.addEventListener("submit", addtHandler);
