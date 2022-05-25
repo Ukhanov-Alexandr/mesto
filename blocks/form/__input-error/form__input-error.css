@@ -1,0 +1,13 @@
+.form__input-error {
+  display: block;
+  min-height: 35px;
+  max-width: 358px;
+  padding-top: 5px;
+  box-sizing: border-box;
+} 
+  
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .form__input-error {
+    max-width: calc(((100vw - 320px) * (76 / 448)) + 230px);
+  }
+}

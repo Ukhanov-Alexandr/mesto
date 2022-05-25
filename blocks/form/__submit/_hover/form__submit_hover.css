@@ -1,0 +1,4 @@
+.form__submit_hover:hover {
+  opacity: .6;
+  cursor: pointer;
+}

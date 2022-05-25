@@ -15,10 +15,6 @@
   text-align: center;
 }
   
-.popup-add__btn-save:hover {
-  opacity: .6;
-  cursor: pointer;
-}
     
 @media screen and (max-width: 767px) {
   .popup-add__btn-save {

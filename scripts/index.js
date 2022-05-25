@@ -7,29 +7,52 @@ const buttonClosePopup = document.querySelector(".popup__btn-close");
 const inputName = document.querySelector(".popup__input_type_name");
 const inputAbout = document.querySelector(".popup__input_type_about");
 
-function popupOpen (popup) {
+//функция открывает попап
+function openPopup (popup) {
   popup.classList.add("popup_opened");
-}
+};
 
-function popupClose (popup) {
+//функция закрывает попап
+function closePopup (popup) {
   popup.classList.remove("popup_opened");
-}
+};
 
-buttonEdit.addEventListener("click", function () {
-  popupOpen(popupEdit);
+//функция закрывает попап при клике на оверлей
+function closePopupOverlay (popup) {
+  popup.addEventListener('mousedown', (evt) => {
+    closePopup(evt.target);
+  });
+};
+
+//функция закрывает попап на esc
+function closePopupEsc (popup) {
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === "Escape") closePopup(popup);
+  });
+};
+
+//при открытии popupEdit
+buttonEdit.addEventListener("click", () => {
   inputName.value = profileName.textContent;
   inputAbout.value = profileAbout.textContent;
+  checkValid(config, popupEdit);
+  openPopup(popupEdit);
+  closePopupOverlay(popupEdit);
+  closePopupEsc(popupEdit);
 });
 
+//хендлер для edit
 function editHandler (evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileAbout.textContent = inputAbout.value;
-  popupClose(popupEdit);
+  closePopup(popupEdit);
 };
 
-popupForm.addEventListener("submit", editHandler);
-buttonClosePopup.addEventListener("click", () => popupClose(popupEdit));
+popupForm.addEventListener("submit", editHandler)
+buttonClosePopup.addEventListener("click", () => {
+  closePopup(popupEdit);
+});
 
 
 // ниже - функционал 5го спринта
@@ -49,7 +72,7 @@ const imageCaption = popupImage.querySelector(".popup-image__caption");
 //функция добавляет готовые катрочки
 function cardRender (card) {
   cardСontainer.prepend(card);
-}
+};
 
 //функция по созданию карточки
 function cardCreate (title, link) {
@@ -62,14 +85,16 @@ function cardCreate (title, link) {
   image.alt = `Фото ${title}`;
   like.addEventListener("click", () => like.classList.toggle("element__btn-heart_active"));
   image.addEventListener("click", () => {
-    popupOpen(popupImage);
+    openPopup(popupImage);
     imageView.src = link;
     imageView.alt = `Фото ${title}`;
     imageCaption.textContent = title;
+    closePopupOverlay(popupImage);
+    closePopupEsc (popupImage);
   });
   trash.addEventListener("click", () => card.remove());
   return card;
-}
+};
 
 initialCards.forEach ((item) => {
   const title = item.name;
@@ -77,16 +102,27 @@ initialCards.forEach ((item) => {
   cardRender (cardCreate(title, link));
 });
 
+//хендлер для add
 function addtHandler (evt) {
   evt.preventDefault();
   const title = inputCaption.value;
   const link = inputLink.value;
   cardRender (cardCreate(title, link));
-  popupClose(popupAdd);
+  closePopup(popupAdd);
   popupFormAdd.reset();
-}
+};
 
-buttonAdd.addEventListener("click", () => popupOpen(popupAdd));
-buttonCloseAdd.addEventListener("click", () => popupClose(popupAdd));
+//при открытии popupAdd
+buttonAdd.addEventListener("click", () => {
+  popupFormAdd.reset();
+  checkValid(config, popupAdd);
+  openPopup(popupAdd);
+  closePopupOverlay(popupAdd);
+  closePopupEsc(popupAdd);
+});
+
+buttonCloseAdd.addEventListener("click", () => {
+  closePopup(popupAdd);
+});
 popupFormAdd.addEventListener("submit", addtHandler);
-buttonClosePopupImage.addEventListener("click", () => popupClose(popupImage));
+buttonClosePopupImage.addEventListener("click", () => closePopup(popupImage));

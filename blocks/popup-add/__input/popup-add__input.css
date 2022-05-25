@@ -11,18 +11,18 @@
   line-height: 17px;
   box-sizing: border-box;
   outline: none;
-}
+};
   
 .popup-add__input:first-child {
-  margin: 0 0 30px;
-}
+  margin: 0;
+};
   
 .popup-add__input:nth-child(2) {
   margin: 0 0 48px;
-}
+};
     
 @media screen and (max-width: 767px) {
   .popup-add__input:nth-child(2) {
     margin-bottom: calc(((100vw - 320px) * (3 / 448)) + 45px);
   }
-}
+};
