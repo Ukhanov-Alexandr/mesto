@@ -1,5 +1,5 @@
 .popup-image {
-  display: flex;
+  /* display: flex;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0.2s linear, opacity 0.2s linear;
@@ -11,6 +11,6 @@
   left: 0;
   z-index: 1;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   flex-direction: column;
 }

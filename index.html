@@ -36,35 +36,35 @@
         <p class="footer__copyright">© 2022 Mesto Russia</p>
       </footer>
     </div>
-    <div class="popup">
+    <div class="popup popup-edit">
       <div class="popup__container">
         <button class="popup__btn-close" type="button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form form" name="profile-form" novalidate>
-          <input class="form__input popup__input popup__input_type_name" name="input-name" type="text" placeholder="Имя" required minlength="2" maxlength="40" />
+          <input class="popup__input popup__input_type_name" name="input-name" type="text" placeholder="Имя" required minlength="2" maxlength="40" />
           <span class="form__input-error input-name-error"></span>
-          <input class="form__input popup__input popup__input_type_about" name="input-about" type="text" placeholder="О себе" required minlength="2" maxlength="200" />
+          <input class="popup__input popup__input_type_about" name="input-about" type="text" placeholder="О себе" required minlength="2" maxlength="200" />
           <span class="form__input-error input-about-error"></span>
-          <button class="form__submit popup__btn-save form__submit_hover" type="submit">Сохранить</button>
+          <button class="popup__btn-save form__submit form__submit_hover" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
-    <div class="popup-add">
-      <div class="popup-add__container">
-        <button class="popup-add__btn-close" type="button"></button>
-        <h3 class="popup-add__title">Новое место</h3>
-        <form class="popup-add__form form" name="card-form" novalidate>
-          <input class="form__input popup-add__input popup-add__input_type_caption" name="input-caption" type="text" placeholder="Название" required minlength="2" maxlength="30"/>
+    <div class="popup popup-add">
+      <div class="popup__container">
+        <button class="popup__btn-close" type="button"></button>
+        <h3 class="popup__title">Новое место</h3>
+        <form class="popup__form form" name="card-form" novalidate>
+          <input class="popup__input popup-add__input_type_caption" name="input-caption" type="text" placeholder="Название" required minlength="2" maxlength="30"/>
           <span class="form__input-error input-caption-error"></span>
-          <input class="form__input popup-add__input popup-add__input_type_link" name="input-link" type="url" placeholder="Ссылка на картинку" required/>
+          <input class="popup__input popup-add__input_type_link" name="input-link" type="url" placeholder="Ссылка на картинку" required/>
           <span class="form__input-error input-link-error"></span>
-          <button class="form__submit popup-add__btn-save form__submit_hover" type="submit">Сохранить</button>
+          <button class="popup__btn-save form__submit form__submit_hover" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
-    <div class="popup-image">
+    <div class="popup popup-image">
      <div class="popup-image__container">
-        <button class="popup-image__btn-close" type="button"></button>
+        <button class="popup__btn-close" type="button"></button>
         <img class="popup-image__image" src="#" alt="">
         <p class="popup-image__caption">Картинка</p>
       </div>

@@ -13,6 +13,13 @@
   outline: none;
 }
 
-.popup__input:nth-child(3) {
+/* .popup__input:nth-child(3) {
   margin: 0 0 0 0;
+} */
+
+.popup__input::placeholder {
+  color: #C4C4C4;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
 }

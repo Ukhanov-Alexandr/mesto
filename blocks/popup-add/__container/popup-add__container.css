@@ -1,7 +1,7 @@
-.popup-add__container {
+/* .popup-add__container {
   max-width: 430px;
-  width: 100%;
   min-height: 330px;
+  width: 100%;
   background-color: #fff;
   border-radius: 10px;
   position: relative;
@@ -18,4 +18,4 @@
     padding-bottom: calc(((100vw - 320px) * (9 / 448)) + 25px);
     padding-left: calc(((100vw - 320px) * (14 / 448)) + 22px);
   }
-}
+} */

@@ -1,4 +1,4 @@
-.popup-add__input {
+/* .popup-add__input {
   width: 100%;
   padding: 0 0 13px;
   border: 0;
@@ -11,9 +11,9 @@
   line-height: 17px;
   box-sizing: border-box;
   outline: none;
-}
+} */
   
-.popup-add__input:first-child {
+/* .popup-add__input:first-child {
   margin: 0;
 }
   
@@ -25,4 +25,4 @@
   .popup-add__input:nth-child(2) {
     margin-bottom: calc(((100vw - 320px) * (3 / 448)) + 45px);
   }
-}
+} */

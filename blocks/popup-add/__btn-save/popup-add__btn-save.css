@@ -1,4 +1,4 @@
-.popup-add__btn-save {
+/* .popup-add__btn-save {
   width: 100%;
   min-height: 50px;
   padding: 0;
@@ -13,6 +13,7 @@
   font-size: 18px;
   line-height: 22px;
   text-align: center;
+  box-sizing: border-box;
 }
   
     
@@ -22,4 +23,4 @@
     line-height: calc(((100vw - 320px) * (5 / 448)) + 17px);
     min-height: calc(((100vw - 320px) * (4 / 448)) + 46px);
   }
-}
+} */

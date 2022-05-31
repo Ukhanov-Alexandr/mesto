@@ -1,11 +1,11 @@
-.popup-image__btn-close {
-  background-color: rgba(0, 0, 0, 0);
-  background-image: url(../../../images/button-close.svg);
-  position: absolute;
+/* .popup-image__btn-close {
   width: 32px;
   height: 32px;
+  position: absolute;
   top: -40px;
   right: -40px;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url(../../../images/button-close.svg);
   padding: 0;
   border: 0;
   cursor: pointer;
@@ -25,4 +25,4 @@
     width: calc(((100vw - 320px) * (12 / 448)) + 20px);
     height: calc(((100vw - 320px) * (12 / 448)) + 20px);
   }
-}
+} */

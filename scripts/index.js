@@ -1,73 +1,78 @@
-const popupEdit = document.querySelector(".popup");
+const cardTemplate = document.querySelector('.elements-template').content;
+const cardСontainer = document.querySelector('.elements');
+
+const popupEdit = document.querySelector(".popup-edit");
 const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__about");
 const buttonEdit = document.querySelector(".profile__btn_type_edit");
-const popupForm = document.querySelector(".popup__form");
-const buttonClosePopup = document.querySelector(".popup__btn-close");
-const inputName = document.querySelector(".popup__input_type_name");
-const inputAbout = document.querySelector(".popup__input_type_about");
+const popupFormEdit = popupEdit.querySelector(".popup__form");
+const buttonClosePopupEdit = popupEdit.querySelector(".popup__btn-close");
+const inputName = popupEdit.querySelector(".popup__input_type_name");
+const inputAbout = popupEdit.querySelector(".popup__input_type_about");
 
-//функция открывает попап
+const popupAdd = document.querySelector(".popup-add");
+const buttonAdd = document.querySelector(".profile__btn_type_add");
+const buttonCloseAdd = popupAdd.querySelector(".popup__btn-close");
+const popupFormAdd =  popupAdd.querySelector(".popup__form");
+const inputCaption = popupAdd.querySelector(".popup-add__input_type_caption");
+const inputLink = popupAdd.querySelector(".popup-add__input_type_link");
+
+const popupImage = document.querySelector(".popup-image");
+const buttonClosePopupImage = popupImage.querySelector(".popup__btn-close");
+const imageView = popupImage.querySelector(".popup-image__image");
+const imageCaption = popupImage.querySelector(".popup-image__caption");
+
+//функция открывает попап + вешает слушатель на esc
 function openPopup (popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener('keydown', closeByEsc);
 };
 
-//функция закрывает попап
+//функция закрывает попап и удаляет ненужные слушатели
 function closePopup (popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener('keydown', closeByEsc);
+  popup.removeEventListener('mousedown', handleOverlayClick);
 };
 
-//функция закрывает попап при клике на оверлей
-function closePopupOverlay (popup) {
-  popup.addEventListener('mousedown', (evt) => {
+// функция закрывает попап при клике на оверлей
+const handleOverlayClick = (evt) => {
+  if (evt.target === evt.currentTarget) {
     closePopup(evt.target);
-  });
+  };
 };
 
-//функция закрывает попап на esc
-function closePopupEsc (popup) {
-  document.addEventListener('keydown', (evt) => {
-    if (evt.key === "Escape") closePopup(popup);
-  });
+// функция закрывает попап на esc
+function closeByEsc (evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
 };
 
 //при открытии popupEdit
 buttonEdit.addEventListener("click", () => {
   inputName.value = profileName.textContent;
   inputAbout.value = profileAbout.textContent;
-  checkValid(config, popupEdit);
+  checkValid(popupEdit, config);
+  popupEdit.addEventListener('mousedown', handleOverlayClick);
   openPopup(popupEdit);
-  closePopupOverlay(popupEdit);
-  closePopupEsc(popupEdit);
 });
 
-//хендлер для edit
-function editHandler (evt) {
+//хендлер для формы edit
+function handleEditSubmit (evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileAbout.textContent = inputAbout.value;
   closePopup(popupEdit);
 };
 
-popupForm.addEventListener("submit", editHandler)
-buttonClosePopup.addEventListener("click", () => {
+popupFormEdit.addEventListener("submit", handleEditSubmit)
+buttonClosePopupEdit.addEventListener("click", () => {
   closePopup(popupEdit);
+  popupEdit.removeEventListener('mousedown', handleOverlayClick);
 });
 
-
-// ниже - функционал 5го спринта
-const cardTemplate = document.querySelector('.elements-template').content;
-const cardСontainer = document.querySelector('.elements');
-const popupAdd = document.querySelector(".popup-add");
-const buttonAdd = document.querySelector(".profile__btn_type_add");
-const buttonCloseAdd = popupAdd.querySelector(".popup-add__btn-close");
-const popupFormAdd =  popupAdd.querySelector(".popup-add__form");
-const inputCaption = popupAdd.querySelector(".popup-add__input_type_caption");
-const inputLink = popupAdd.querySelector(".popup-add__input_type_link");
-const popupImage = document.querySelector(".popup-image");
-const buttonClosePopupImage = popupImage.querySelector(".popup-image__btn-close");
-const imageView = popupImage.querySelector(".popup-image__image");
-const imageCaption = popupImage.querySelector(".popup-image__caption");
 
 //функция добавляет готовые катрочки
 function cardRender (card) {
@@ -85,12 +90,11 @@ function cardCreate (title, link) {
   image.alt = `Фото ${title}`;
   like.addEventListener("click", () => like.classList.toggle("element__btn-heart_active"));
   image.addEventListener("click", () => {
-    openPopup(popupImage);
     imageView.src = link;
     imageView.alt = `Фото ${title}`;
     imageCaption.textContent = title;
-    closePopupOverlay(popupImage);
-    closePopupEsc (popupImage);
+    openPopup(popupImage);
+    popupImage.addEventListener('mousedown', handleOverlayClick);
   });
   trash.addEventListener("click", () => card.remove());
   return card;
@@ -102,8 +106,8 @@ initialCards.forEach ((item) => {
   cardRender (cardCreate(title, link));
 });
 
-//хендлер для add
-function addtHandler (evt) {
+//хендлер для формы add
+function handleAddSubmit (evt) {
   evt.preventDefault();
   const title = inputCaption.value;
   const link = inputLink.value;
@@ -115,14 +119,16 @@ function addtHandler (evt) {
 //при открытии popupAdd
 buttonAdd.addEventListener("click", () => {
   popupFormAdd.reset();
-  checkValid(config, popupAdd);
+  checkValid(popupAdd, config);
   openPopup(popupAdd);
-  closePopupOverlay(popupAdd);
-  closePopupEsc(popupAdd);
+  popupAdd.addEventListener('mousedown', handleOverlayClick);
 });
 
 buttonCloseAdd.addEventListener("click", () => {
   closePopup(popupAdd);
 });
-popupFormAdd.addEventListener("submit", addtHandler);
-buttonClosePopupImage.addEventListener("click", () => closePopup(popupImage));
+popupFormAdd.addEventListener("submit", handleAddSubmit);
+buttonClosePopupImage.addEventListener("click", () => {
+  closePopup(popupImage);
+  popupImage.removeEventListener('mousedown', handleOverlayClick);
+});
