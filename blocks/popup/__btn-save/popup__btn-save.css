@@ -16,6 +16,11 @@
   box-sizing: border-box;
 }
 
+.popup__btn-save:hover {
+  opacity: .6;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 767px) {
   .popup__btn-save {
     font-size: calc(((100vw - 320px) * (4 / 448)) + 14px);
