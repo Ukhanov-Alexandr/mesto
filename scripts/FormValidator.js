@@ -16,6 +16,7 @@ class FormValidator {
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
     this._form = form;
+    this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
   }
 
   _showInputError (inputElement, errorMessage) {
@@ -60,22 +61,23 @@ class FormValidator {
     };
   };
 
-  enableValidation () {
-      const inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
-      inputList.forEach((inputElement) => {
-        inputElement.addEventListener('input', () => {
-          this._isValid(inputElement);
-          this._toggleButtonState(inputList);
-        });
-    });
+  _setEventListener(inputList) { 
+    inputList.forEach((inputElement) => { 
+      inputElement.addEventListener('input', () => { 
+        this._isValid(inputElement);
+        this._toggleButtonState(inputList); 
+      }); 
+    }); 
   };
 
-  checkValid (popup) {
-    const formElement = popup.querySelector(this._formSelector);
-    const inputList = Array.from(formElement.querySelectorAll(this._inputSelector));
-    inputList.forEach((inputElement) => {
+  enableValidation () {
+    this._setEventListener(this._inputList);
+  };
+
+  checkValid () {
+    this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
-      this._toggleButtonState(inputList);
+      this._toggleButtonState(this._inputList);
     });
   };
 }

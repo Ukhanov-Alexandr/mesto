@@ -1,30 +1,3 @@
-const initialCards = [
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Jared',
-    link: 'https://media0.giphy.com/media/l41YwWrjEhTGpE3zG/giphy.gif?cid=790b7611a485b2e4c2c72018ce88b1663564f45827d0a363&rid=giphy.gif&ct=g'
-  }
-];
-
 export const cardConfig = {
     templateSelector: '.elements-template',
     elementSelector: '.element',
@@ -36,17 +9,13 @@ export const cardConfig = {
     buttonHeartClassActive: 'element__btn-heart_active'
 };
 
-import {openPopup} from './index.js';
-const popupImage = document.querySelector(".popup-image");
-const imageView = popupImage.querySelector(".popup-image__image");
-const imageCaption = popupImage.querySelector(".popup-image__caption");
-
 class Card {
-  constructor (data, selector) {
+  constructor (data, selector, handleCardClick) {
     this._title = data.name;
     this._link = data.link;
     this._templateSelector = selector.templateSelector;
     this._elementSelector = selector.elementSelector;
+    this._handleCardClick = handleCardClick
   }
 
   _getTemplate() {
@@ -60,6 +29,7 @@ class Card {
     this._setEventListeners();
     this._card.querySelector(cardConfig.captionSelector).textContent = this._title;
     this._card.querySelector(cardConfig.igmSelector).src = this._link;
+    this._card.querySelector(cardConfig.igmSelector).alt = `Фото ${this._title}`;
     return this._card;
   }
 
@@ -70,7 +40,7 @@ class Card {
 
     this._like.addEventListener("click", () => this._handleLikeClick());
     this._trash.addEventListener("click", () => this._handleTrashClick());
-    this._image.addEventListener("click", () => this._handleImageClick());
+    this._image.addEventListener("click", () => this._handleCardClick(this._name, this._link));
   };
 
   _handleLikeClick() {
@@ -80,20 +50,6 @@ class Card {
   _handleTrashClick() {
     this._card.remove();
   };
-
-  _handleImageClick() {
-    imageView.src = this._link;
-    imageView.alt = `Фото ${this._title}`;
-    imageCaption.textContent = this._title;
-    openPopup(popupImage);
-  }
 }
 
-initialCards.forEach((item) => {
-  const card = new Card(item, cardConfig);
-  const cardElement = card.generateCard();
-  document.querySelector(cardConfig.cardСontainerSelector).prepend(cardElement);
-});
-
 export default Card;
-

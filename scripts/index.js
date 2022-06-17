@@ -3,6 +3,33 @@ import Card from './Card.js';
 import {validConfig} from './FormValidator.js';
 import {cardConfig} from './Card.js';
 
+const initialCards = [
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Jared',
+    link: 'https://media0.giphy.com/media/l41YwWrjEhTGpE3zG/giphy.gif?cid=790b7611a485b2e4c2c72018ce88b1663564f45827d0a363&rid=giphy.gif&ct=g'
+  }
+];
+
 const cardСontainer = document.querySelector('.elements');
 const popupEdit = document.querySelector(".popup-edit");
 const profileName = document.querySelector(".profile__name");
@@ -17,29 +44,36 @@ const popupFormAdd =  popupAdd.querySelector(".popup__form");
 const inputCaption = popupAdd.querySelector(".popup__input_type_caption");
 const inputLink = popupAdd.querySelector(".popup__input_type_link");
 
+const popupImage = document.querySelector(".popup-image");
+const imageView = popupImage.querySelector(".popup-image__image");
+const imageCaption = popupImage.querySelector(".popup-image__caption");
+
+//тут хранятся экземпляры класса FormValidator
+const formValidators = {}
+
 //функция открывает попап + вешает слушатель на esc и оверлей
-export function openPopup (popup) {
+export function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener('keydown', closeByEsc);
   popup.addEventListener('mousedown', handleOverlayClick);
 };
 
 //функция закрывает попап и удаляет ненужные слушатели
-function closePopup (popup) {
+function closePopup(popup) {
   popup.classList.remove("popup_opened");
   document.removeEventListener('keydown', closeByEsc);
   popup.removeEventListener('mousedown', handleOverlayClick);
 };
 
-// функция закрывает попап при клике на оверлей
+//функция закрывает попап при клике на оверлей
 const handleOverlayClick = (evt) => {
   if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__btn-close')) {
     closePopup(evt.currentTarget);
   };
 };
 
-// функция закрывает попап на esc
-function closeByEsc (evt) {
+//функция закрывает попап на esc
+function closeByEsc(evt) {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup);
@@ -47,33 +81,55 @@ function closeByEsc (evt) {
 };
 
 //хендлер для формы edit
-function handleEditSubmit (evt) {
+function handleEditSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileAbout.textContent = inputAbout.value;
   closePopup(popupEdit);
 };
 
+//хендлер для клика по карточке
+function handleCardClick() {
+  imageView.src = this._link;
+  imageView.alt = `Фото ${this._title}`;
+  imageCaption.textContent = this._title;
+  openPopup(popupImage);
+};
+
+//функция добавляет готовые катрочки 
+function cardRender(card) { 
+  cardСontainer.prepend(card);
+};
+
+//функция по созданию карты
+function createCard(data) {
+  const card = new Card(data, cardConfig, handleCardClick);
+  const cardElement = card.generateCard();
+  return cardElement;
+};
+
+//отрисовка начального массива карт
+initialCards.forEach((item) => {
+  cardRender(createCard(item));
+});
+
 //хендлер для формы add
-function handleAddSubmit (evt) {
+function handleAddSubmit(evt) {
   evt.preventDefault();
   const data = {
     name: inputCaption.value,
     link: inputLink.value
   };
-  const card = new Card(data, cardConfig);
-  const cardElement = card.generateCard();
-  cardСontainer.prepend(cardElement);
+  cardRender(createCard(data));
   closePopup(popupAdd);
   popupFormAdd.reset();
 };
 
-//функция очищает форму
+//функция очищает форму 
 const formClean = (popup) => {
   const formPopup = popup.querySelector(validConfig.formSelector);
-  const formValidatorOn = new FormValidator(validConfig, formPopup);
-  formValidatorOn.checkValid(popup);
-}
+  formValidators[formPopup.getAttribute('name')].checkValid();
+};
 
 //при открытии popupEdit
 buttonEdit.addEventListener("click", () => {
@@ -90,11 +146,19 @@ buttonAdd.addEventListener("click", () => {
   openPopup(popupAdd);
 });
 
-popupFormEdit.addEventListener("submit", handleEditSubmit)
+popupFormEdit.addEventListener("submit", handleEditSubmit);
 popupFormAdd.addEventListener("submit", handleAddSubmit);
 
-const formList = Array.from(document.querySelectorAll(validConfig.formSelector));
-formList.forEach((formElement) => {
-    const formValidatorOn = new FormValidator(validConfig, formElement);
-    formValidatorOn.enableValidation();
-});
+//функция создает экземпляры FormValidator, кладет их в объект formValidators,
+//включает валидацию форм
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement)
+    const formName = formElement.getAttribute('name')
+    formValidators[formName] = validator
+    validator.enableValidation();
+  });
+};
+
+enableValidation(validConfig);
