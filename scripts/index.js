@@ -127,8 +127,8 @@ function handleAddSubmit(evt) {
 
 //функция очищает форму 
 const formClean = (popup) => {
-  const formPopup = popup.querySelector(validConfig.formSelector);
-  formValidators[formPopup.getAttribute('name')].checkValid();
+  const form = popup.querySelector(validConfig.formSelector);
+  formValidators[form.name].checkValid();
 };
 
 //при открытии popupEdit
