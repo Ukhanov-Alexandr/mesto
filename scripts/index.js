@@ -89,10 +89,10 @@ function handleEditSubmit(evt) {
 };
 
 //хендлер для клика по карточке
-function handleCardClick() {
-  imageView.src = this._link;
-  imageView.alt = `Фото ${this._title}`;
-  imageCaption.textContent = this._title;
+function handleCardClick(title, link) {
+  imageView.src = link;
+  imageView.alt = `Фото ${title}`;
+  imageCaption.textContent = title;
   openPopup(popupImage);
 };
 
@@ -116,11 +116,11 @@ initialCards.forEach((item) => {
 //хендлер для формы add
 function handleAddSubmit(evt) {
   evt.preventDefault();
-  const data = {
+  const input = {
     name: inputCaption.value,
     link: inputLink.value
   };
-  cardRender(createCard(data));
+  cardRender(createCard(input));
   closePopup(popupAdd);
   popupFormAdd.reset();
 };
@@ -154,10 +154,10 @@ popupFormAdd.addEventListener("submit", handleAddSubmit);
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
-    const validator = new FormValidator(config, formElement)
+    const validity = new FormValidator(config, formElement)
     const formName = formElement.getAttribute('name')
-    formValidators[formName] = validator
-    validator.enableValidation();
+    formValidators[formName] = validity
+    validity.enableValidation();
   });
 };
 
