@@ -97,7 +97,7 @@ function handleCardClick(title, link) {
 };
 
 //функция добавляет готовые катрочки 
-function cardRender(card) { 
+function cardRender(card) {
   cardСontainer.prepend(card);
 };
 
