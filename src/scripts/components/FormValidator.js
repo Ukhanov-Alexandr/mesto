@@ -1,13 +1,4 @@
-export const validConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.form__submit',
-  inactiveButtonClass: 'form__submit_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active',
-};
-
-class FormValidator {
+export default class FormValidator {
   constructor (config, form) {
     this._formSelector = config.formSelector;
     this._inputSelector = config.inputSelector;
@@ -81,5 +72,3 @@ class FormValidator {
     });
   };
 }
-
-export default FormValidator;
