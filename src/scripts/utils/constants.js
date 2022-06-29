@@ -1,26 +1,26 @@
 export const initialCards = [
     {
-      name: 'Байкал',
+      caption: 'Байкал',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     },
     {
-      name: 'Холмогорский район',
+      caption: 'Холмогорский район',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
     },
     {
-      name: 'Камчатка',
+      caption: 'Камчатка',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
     },
     {
-      name: 'Иваново',
+      caption: 'Иваново',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
     },
     {
-      name: 'Челябинская область',
+      caption: 'Челябинская область',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
     },
     {
-      name: 'Jared',
+      caption: 'Jared',
       link: 'https://media0.giphy.com/media/l41YwWrjEhTGpE3zG/giphy.gif?cid=790b7611a485b2e4c2c72018ce88b1663564f45827d0a363&rid=giphy.gif&ct=g'
     }
 ];
@@ -63,7 +63,6 @@ export const validConfig = {
   inactiveButtonClass: 'form__submit_inactive',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active',
-  popupButtonCloseClass: 'popup__btn-close'
 };
 
 export const popupSelectors = {
@@ -72,6 +71,16 @@ export const popupSelectors = {
   popupAddSelector: '.popup-add',
 }
 
-export const additionalClass = {
-  additionalPopupClass: 'popup_opened'
+export const popupConfig = {
+  additionalPopupClass: 'popup_opened',
+  popupButtonCloseClass: 'popup__btn-close',
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  imageViewSelector: '.popup-image__image',
+  imageCaptionSelector: '.popup-image__caption'
+}
+
+export const userInfoConfig = {
+  nameSelector: '.profile__name',
+  aboutSelector: '.profile__about'
 }

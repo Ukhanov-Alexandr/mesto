@@ -1,17 +1,17 @@
-import {additionalClass, validConfig} from '../utils/constants.js';
 export default class Popup {
-  constructor(popupSelector){
+  constructor(popupSelector, config){
     this._popup = document.querySelector(popupSelector);
+    this._config = config;
   }
 
   open(){
-    this._popup.classList.add(additionalClass.additionalPopupClass);
+    this._popup.classList.add(this._config.additionalPopupClass);
+    document.addEventListener('keydown', this._handleEscClose);
   }
 
   close(){
-    this._popup.classList.remove(additionalClass.additionalPopupClass);
+    this._popup.classList.remove(this._config.additionalPopupClass);
     document.removeEventListener('keydown', this._handleEscClose);
-    this._popup.removeEventListener('mousedown', this._handleOverlayClose);
   }
 
   _handleEscClose = (evt) => {
@@ -21,13 +21,12 @@ export default class Popup {
   }
 
   _handleOverlayClose = (evt) => {
-    if (evt.target === evt.currentTarget || evt.target.classList.contains(validConfig.popupButtonCloseClass)) {
+    if (evt.target === evt.currentTarget || evt.target.classList.contains(this._config.popupButtonCloseClass)) {
       this.close();
     };
   }
 
   setEventListeners(){
-    document.addEventListener('keydown', this._handleEscClose);
     this._popup.addEventListener('mousedown', this._handleOverlayClose);
   }
 }

@@ -12,62 +12,76 @@ import {
   formValidators,
   cardConfig,
   validConfig,
-  popupSelectors
+  popupSelectors,
+  popupConfig,
+  userInfoConfig
 } from '../scripts/utils/constants.js';
 import FormValidator from '../scripts/components/FormValidator.js';
 import Card from '../scripts/components/Card.js';
 import Sections from '../scripts/components/Section.js'
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
-// import UserInfo from '../scripts/components/UserInfo.js';
+import UserInfo from '../scripts/components/UserInfo.js';
 import './index.css';
 
 //хендлер для клика по карточке
 function handleCardClick(name, link) {
-  const cardPopup = new PopupWithImage(popupSelectors.popupImageSelector, name, link);
-  cardPopup.open();
-  cardPopup.setEventListeners();
+  cardPopup.open(name, link);
 };
 
 //функция по созданию карты
-function createCard(array) {
-  const initialCardList = new Sections({items: array, renderer: (item) => {
-    const card = new Card(item, cardConfig, handleCardClick);
-      const cardElement = card.generateCard();
-      initialCardList.addItem(cardElement);
-    }
-  }, cardСontainer);
-  initialCardList.renderItems();
+function createCard(item) {
+  const card = new Card(item, cardConfig, handleCardClick);
+    return card.generateCard();
 };
 
-//отрисовка начального массива карт
-createCard(initialCards);
+const cardPopup = new PopupWithImage(popupSelectors.popupImageSelector, popupConfig);
+cardPopup.setEventListeners();
+
+const initialCardList = new Sections({
+  items: initialCards,
+  renderer: (item) => {
+    const card = createCard(item);
+    initialCardList.addItem(card)
+  }
+}, cardСontainer);
+initialCardList.renderItems();
+
+const userInfo = new UserInfo(userInfoConfig);
+
+const popupProfile = new PopupWithForm(
+  popupSelectors.popupEditSelector,
+  popupConfig,
+  {callbackSubmit: (ProfileinputValue) => {
+      userInfo.setUserInfo(ProfileinputValue);
+      profileName.textContent = userInfo.getUserInfo().name;
+      profileAbout.textContent = userInfo.getUserInfo().about
+    }
+  });
+popupProfile.setEventListeners();
 
 //при открытии popupEdit
 buttonEdit.addEventListener("click", () => {
-  inputName.value = profileName.textContent;
-  inputAbout.value = profileAbout.textContent;
+  inputName.value = userInfo.getUserInfo().name;
+  inputAbout.value = userInfo.getUserInfo().about;
   formClean(popupEdit);
-  const popup = new PopupWithForm(
-    popupSelectors.popupEditSelector,
-    {callbackSubmit: (obj) => {
-        profileName.textContent = obj.name;
-        profileAbout.textContent = obj.about
-      }
-    });
-  popup.setEventListeners();
-  popup.open()
+  popupProfile.open()
 });
+
+const popupAddCard = new PopupWithForm(
+  popupSelectors.popupAddSelector,
+  popupConfig,
+  {callbackSubmit: (obj) => {
+      cardСontainer.prepend(createCard(obj));
+    }
+  }
+);
+popupAddCard.setEventListeners();
 
 //при открытии popupAdd
 buttonAdd.addEventListener("click", () => {
   formClean(popupAdd);
-  const popup = new PopupWithForm(
-    popupSelectors.popupAddSelector,
-    {callbackSubmit: (obj) => createCard([{name: obj.caption, link: obj.link}])
-    });
-  popup.setEventListeners();
-  popup.open();
+  popupAddCard.open();
 });
 
 //функция создает экземпляры FormValidator, кладет их в объект formValidators,
@@ -87,9 +101,5 @@ const formClean = (popup) => {
   const form = popup.querySelector(validConfig.formSelector);
   formValidators[form.name].checkValid();
 };
-
-// const userInfo = new UserInfo({nameSelector: '.profile__name', aboutSelector: '.profile__about'});
-// userInfo.setUserInfo({name: "Ихарь", about: "Жеребец"});
-// userInfo.getUserInfo();
 
 enableValidation(validConfig);
