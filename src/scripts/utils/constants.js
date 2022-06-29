@@ -25,6 +25,33 @@ export const initialCards = [
     }
 ];
 
+export const legends = [
+  {
+    caption: 'Arnie',
+    link: 'https://i.pinimg.com/564x/1d/46/4b/1d464b2e0d76083e8b00e3a590b7e43d.jpg'
+  },
+  {
+    caption: 'Bruce Lee',
+    link: 'https://i.pinimg.com/564x/9e/10/57/9e1057740fe2d5cd51094a5fe408bbca.jpg'
+  },
+  {
+    caption: 'Chuck Norris',
+    link: 'https://i.pinimg.com/564x/96/b3/b5/96b3b5f3e82f031edbf8cca6f6136deb.jpg'
+  },
+  {
+    caption: 'Sylvester Stallone',
+    link: 'https://i.pinimg.com/564x/28/9d/46/289d46f84fae753c6c673896382d5bf2.jpg'
+  },
+  {
+    caption: 'Jackie Chan',
+    link: 'https://i.pinimg.com/564x/e7/d4/9d/e7d49ddfa53b0a9a528748a8afc9b9a1.jpg'
+  },
+  {
+    caption: 'Jean-Claude Van Damme',
+    link: 'https://i.pinimg.com/originals/02/63/de/0263de704e0c36a0354fde116e05ef1f.gif'
+  }
+];
+
 //константы для index.js
 export const cardСontainer = document.querySelector('.elements');
 export const popupEdit = document.querySelector(".popup-edit");

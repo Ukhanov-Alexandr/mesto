@@ -1,5 +1,6 @@
 import {
   initialCards,
+  legends,
   cardСontainer,
   popupEdit,
   buttonEdit,
@@ -37,7 +38,7 @@ const cardPopup = new PopupWithImage(popupSelectors.popupImageSelector, popupCon
 cardPopup.setEventListeners();
 
 const cardSection = new Sections({
-  items: initialCards,
+  items: legends,
   renderer: (item) => {
     const card = createCard(item);
     cardSection.addItem(card)
