@@ -2,8 +2,6 @@ import {
   initialCards,
   cardСontainer,
   popupEdit,
-  profileName,
-  profileAbout,
   buttonEdit,
   inputName,
   inputAbout,
@@ -38,14 +36,14 @@ function createCard(item) {
 const cardPopup = new PopupWithImage(popupSelectors.popupImageSelector, popupConfig);
 cardPopup.setEventListeners();
 
-const initialCardList = new Sections({
+const cardSection = new Sections({
   items: initialCards,
   renderer: (item) => {
     const card = createCard(item);
-    initialCardList.addItem(card)
+    cardSection.addItem(card)
   }
 }, cardСontainer);
-initialCardList.renderItems();
+cardSection.renderItems();
 
 const userInfo = new UserInfo(userInfoConfig);
 
@@ -54,16 +52,15 @@ const popupProfile = new PopupWithForm(
   popupConfig,
   {callbackSubmit: (ProfileinputValue) => {
       userInfo.setUserInfo(ProfileinputValue);
-      profileName.textContent = userInfo.getUserInfo().name;
-      profileAbout.textContent = userInfo.getUserInfo().about
     }
   });
 popupProfile.setEventListeners();
 
 //при открытии popupEdit
 buttonEdit.addEventListener("click", () => {
-  inputName.value = userInfo.getUserInfo().name;
-  inputAbout.value = userInfo.getUserInfo().about;
+  const currentUserInfo = userInfo.getUserInfo();
+  inputName.value = currentUserInfo.name;
+  inputAbout.value = currentUserInfo.about;
   formClean(popupEdit);
   popupProfile.open()
 });
@@ -72,7 +69,7 @@ const popupAddCard = new PopupWithForm(
   popupSelectors.popupAddSelector,
   popupConfig,
   {callbackSubmit: (obj) => {
-      cardСontainer.prepend(createCard(obj));
+    cardSection.addItem(createCard(obj));
     }
   }
 );
