@@ -37,8 +37,9 @@ function createCard(item) {
 const cardPopup = new PopupWithImage(popupSelectors.popupImageSelector, popupConfig);
 cardPopup.setEventListeners();
 
+//Новая секция 
 const cardSection = new Sections({
-  items: legends,
+  items: initialCards,
   renderer: (item) => {
     const card = createCard(item);
     cardSection.addItem(card)
