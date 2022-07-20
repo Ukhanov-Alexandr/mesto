@@ -1,62 +1,35 @@
 export const initialCards = [
     {
-      caption: 'Байкал',
+      name: 'Байкал',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     },
     {
-      caption: 'Холмогорский район',
+      name: 'Холмогорский район',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
     },
     {
-      caption: 'Камчатка',
+      name: 'Камчатка',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
     },
     {
-      caption: 'Иваново',
+      name: 'Иваново',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
     },
     {
-      caption: 'Челябинская область',
+      name: 'Челябинская область',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
     },
     {
-      caption: 'Jared',
-      link: 'https://media0.giphy.com/media/l41YwWrjEhTGpE3zG/giphy.gif?cid=790b7611a485b2e4c2c72018ce88b1663564f45827d0a363&rid=giphy.gif&ct=g'
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
     }
-];
-
-export const legends = [
-  {
-    caption: 'Arnie',
-    link: 'https://i.pinimg.com/564x/1d/46/4b/1d464b2e0d76083e8b00e3a590b7e43d.jpg'
-  },
-  {
-    caption: 'Bruce Lee',
-    link: 'https://i.pinimg.com/564x/9e/10/57/9e1057740fe2d5cd51094a5fe408bbca.jpg'
-  },
-  {
-    caption: 'Chuck Norris',
-    link: 'https://i.pinimg.com/564x/96/b3/b5/96b3b5f3e82f031edbf8cca6f6136deb.jpg'
-  },
-  {
-    caption: 'Sylvester Stallone',
-    link: 'https://i.pinimg.com/564x/28/9d/46/289d46f84fae753c6c673896382d5bf2.jpg'
-  },
-  {
-    caption: 'Jackie Chan',
-    link: 'https://i.pinimg.com/564x/e7/d4/9d/e7d49ddfa53b0a9a528748a8afc9b9a1.jpg'
-  },
-  {
-    caption: 'Jean-Claude Van Damme',
-    link: 'https://i.pinimg.com/originals/02/63/de/0263de704e0c36a0354fde116e05ef1f.gif'
-  }
 ];
 
 //константы для index.js
 export const cardСontainer = document.querySelector('.elements');
 export const popupEdit = document.querySelector(".popup-edit");
-export const profileName = document.querySelector(".profile__name");
-export const profileAbout = document.querySelector(".profile__about");
+// export const profileName = document.querySelector(".profile__name");
+// export const profileAbout = document.querySelector(".profile__about");
 export const buttonEdit = document.querySelector(".profile__btn_type_edit");
 export const popupFormEdit = popupEdit.querySelector(".popup__form");
 export const inputName = popupEdit.querySelector(".popup__input_type_name");
@@ -81,6 +54,7 @@ export const cardConfig = {
   buttonHeartSelector: ".element__btn-heart",
   trashSelector: '.element__trash',
   buttonHeartClassActive: 'element__btn-heart_active',
+  likesCounterSelector: '.element__like-counter'
 };
 
 export const validConfig = {
@@ -96,6 +70,7 @@ export const popupSelectors = {
   popupImageSelector: '.popup-image',
   popupEditSelector: '.popup-edit',
   popupAddSelector: '.popup-add',
+  popupDeleteSelector: '.popup-delete'
 }
 
 export const popupConfig = {
@@ -109,5 +84,6 @@ export const popupConfig = {
 
 export const userInfoConfig = {
   nameSelector: '.profile__name',
-  aboutSelector: '.profile__about'
+  aboutSelector: '.profile__about',
+  avatarSelector: '.profile__avatar'
 }
