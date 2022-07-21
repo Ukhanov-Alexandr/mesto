@@ -5,7 +5,7 @@ export default class PopupWithConfirmation extends Popup {
     this._popupForm = this._popup.querySelector(config.formSelector);
   }
 
-  setSubmitHendler(callback) {
+  submitHendler(callback) {
     this._handleSubmitCallback = callback;
   }
 
@@ -13,33 +13,9 @@ export default class PopupWithConfirmation extends Popup {
     super.setEventListeners();
     this._popupForm.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      console.log(this)
+      // console.log(this)
       this._handleSubmitCallback(this);
       this.close();
     });
   }
 }
-  // open(card){
-  //   super.open();
-  //   console.log(this._popupForm);
-  //   this._popupForm.addEventListener('submit', (evt) => {
-  //     evt.preventDefault();
-  //     console.log(card);
-  //     this._callbackSubmit(card);
-  //     this.close();
-  //   });
-  // }
-
-  // setEventListeners(card){
-  //   super.setEventListeners();
-  //   // console.log(this._popupForm);
-  //   this._popupForm.addEventListener('submit', (evt) => {
-  //     evt.preventDefault();
-  //     // console.log(card);
-  //     this._callbackSubmit(card);
-  //     this.close();
-  //   })
-  // }
-
-
-

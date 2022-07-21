@@ -24,16 +24,7 @@ import Api from '../scripts/components/Api.js';
 import PopupWithConfirmation from '../scripts/components/PopupWithConfirmation.js';
 import './index.css';
 
-//хендлер для клика по карточке
-function handleCardClick(name, link) {
-  cardPopup.open(name, link);
-};
 
-//функция по созданию карты
-function createCard(item) {
-  const card = new Card(item, cardConfig, handleCardClick, handleTrashClick);
-    return card.generateCard();
-};
 
 const cardPopup = new PopupWithImage(popupSelectors.popupImageSelector, popupConfig);
 cardPopup.setEventListeners();
@@ -104,8 +95,17 @@ const formClean = (popup) => {
 };
 
 enableValidation(validConfig);
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//хендлер для клика по карточке
+function handleCardClick(name, link) {
+  cardPopup.open(name, link);
+};
 
+//функция по созданию карты
+function createCard(item) {
+  const card = new Card(item, cardConfig, handleCardClick, handleTrashClick, userInfo.getUserInfo().userId, handleLikeClick);
+    return card.generateCard();
+};
 // const profile = document.querySelector('.profile');
 // const profileName = profile.querySelector(".profile__name");
 // const profileAbout = profile.querySelector(".profile__about");
@@ -125,9 +125,10 @@ const api = new Api(apiConfig);
 //Загрузка информации о пользователе с сервера
 api.getUser()
   .then((userData) => {
-   // console.log(userData)
+    // console.log(userData)
     userInfo.setUserInfo(userData);
     userInfo.setAvatar(userData);
+    // userId.id = userData._id;
   })
   .catch(err => console.log(err));
 
@@ -165,22 +166,58 @@ const popupAddCard = new PopupWithForm(
 );
 popupAddCard.setEventListeners();
 
-
-
-//хендлер для клика по карзине
+//хендлер для клика по корзине
 function handleTrashClick(cardId){
   deletePopup.open();
-  deletePopup.setSubmitHendler(() => {
+  deletePopup.submitHendler(() => {
     api.deleteCard(cardId)
     .then(() => {
-      // console.log(cardId);
-      // console.log(this);
-      // debugger
+      // console.log(this)
       this.deleteCardHandler();
     })
+    .catch(err => console.log(err));
   });
 }
 
 //экземпляр попапа с удалением
 const deletePopup = new PopupWithConfirmation (popupSelectors.popupDeleteSelector, popupConfig);
 deletePopup.setEventListeners();
+
+function handleLikeClick(cardId){
+  if (this._checkContainsActiveClass()) {
+    api.unlikeCard(cardId)
+      .then((arr) => {
+        // console.log(arr.likes)
+        this.updatelikes(arr)
+      })
+      .catch(err => console.log(err))
+  } else {
+    api.setlikeCard(cardId)
+      .then((arr)=>{
+        // console.log(arr.likes)
+        this.updatelikes(arr)
+      })
+      .catch(err => console.log(err));
+  }
+}
+
+// function setlike(cardId) {
+//   api.setlikeCard(cardId)
+//     .then((arr)=>{
+//       // console.log(`лайки ${arr}`);
+//       // console.log(arr.likes);
+//       // console.log(arr.likes.length);
+//       this.updatelikes(arr)
+//     })
+//     .catch(err => console.log(err));
+// };
+
+// function unLike(cardId){
+//   api.unlikeCard(cardId)
+//     .then((arr) => {
+//       // console.log(arr.likes);
+//       // console.log(arr.likes.length);
+//       this.updatelikes(arr)
+//     })
+//     .catch(err => console.log(err));
+// }

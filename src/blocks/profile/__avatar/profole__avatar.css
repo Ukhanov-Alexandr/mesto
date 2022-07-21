@@ -4,6 +4,7 @@
   border-radius: 50%;
   margin-right: 30px;
   object-fit: cover;
+  transition: opacity .3s ease-in-out;
 }
 
 @media screen and (max-width: 767px) {
@@ -11,4 +12,10 @@
     margin-right: 0;
     justify-self: center;
   }
+}
+
+.profile__avatar:hover {
+  cursor: pointer;
+  opacity: .3;
+  background-image: url(../../../images/button-edit.svg);
 }

@@ -66,6 +66,23 @@ export default class Api {
     .catch(err => console.log(err))
   }
 
+  setlikeCard(cardId) {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+      method: 'PUT',
+      headers: this._headers,
+    })
+    .then(res => this._checkResponse(res))
+    .catch(err => console.log(err))
+  }
+
+  unlikeCard(cardId) {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+      method: 'DELETE',
+      headers: this._headers,
+    })
+    .then(res => this._checkResponse(res))
+    .catch(err => console.log(err))
+  }
 }
 //   getData(url){
 //     return fetch(this._url + url, {
