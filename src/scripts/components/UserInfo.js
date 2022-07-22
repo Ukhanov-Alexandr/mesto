@@ -17,6 +17,11 @@ export default class UserInfo {
     this._profileAvatar.alt = newUser.name;
   }
 
+  setNewAvatar(newUser){
+    this._profileAvatar.src = newUser.link;
+    this._profileAvatar.alt = newUser.name;
+  }
+
   getUserInfo(){
     const userInfo = {
         name: this._name.textContent,

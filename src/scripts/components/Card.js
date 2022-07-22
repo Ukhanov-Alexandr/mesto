@@ -1,5 +1,5 @@
 export default class Card {
-  constructor (data, config, handleCardClick, handleTrashClick, userId, handleLikeClick, setlike, unLike) {
+  constructor (data, config, handleCardClick, handleTrashClick, userId, handleLikeClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardId = data._id;
@@ -11,7 +11,6 @@ export default class Card {
     this._handleTrashClick = handleTrashClick;
     // this._setlike = setlike;
     // this._unLike = unLike;
-    
     this._handleLikeClick = handleLikeClick
   }
 

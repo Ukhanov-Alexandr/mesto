@@ -1,30 +1,3 @@
-export const initialCards = [
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    }
-];
-
 //константы для index.js
 export const cardСontainer = document.querySelector('.elements');
 export const popupEdit = document.querySelector(".popup-edit");
@@ -42,8 +15,18 @@ export const inputLink = popupAdd.querySelector(".popup__input_type_link");
 export const popupImage = document.querySelector(".popup-image");
 export const imageView = popupImage.querySelector(".popup-image__image");
 export const imageCaption = popupImage.querySelector(".popup-image__caption");
+export const buttonAvatar = document.querySelector('.profile__btn-edit-avatar');
+export const popupAvatar = document.querySelector('.popup-avatar')
 //тут хранятся экземпляры класса FormValidator
 export const formValidators = {};
+//
+export const apiConfig = {
+  url: "https://nomoreparties.co/v1/cohort-45",
+  headers: {
+    authorization: "672e954f-60da-45a7-8529-433a3c093bb6",
+    "Content-Type": "application/json",
+  },
+};
 
 export const cardConfig = {
   templateSelector: '.elements-template',
@@ -70,7 +53,8 @@ export const popupSelectors = {
   popupImageSelector: '.popup-image',
   popupEditSelector: '.popup-edit',
   popupAddSelector: '.popup-add',
-  popupDeleteSelector: '.popup-delete'
+  popupDeleteSelector: '.popup-delete',
+  popupAvatarSelector: '.popup-avatar'
 }
 
 export const popupConfig = {

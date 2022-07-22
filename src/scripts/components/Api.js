@@ -83,20 +83,17 @@ export default class Api {
     .then(res => this._checkResponse(res))
     .catch(err => console.log(err))
   }
-}
-//   getData(url){
-//     return fetch(this._url + url, {
-//       method: "GET",
-//       headers: this._header,
-//     })
-//       .then((res) => {
-//         if (res.ok) {
-//           return res.json();
-//         }
-//         return Promise.reject(`Возникла ошибка: ${res.status}`);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       })
-//   }
 
+  setNewAvatar(data) {
+    return fetch(`${this._url}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: data
+      }),
+    })
+    .then(res => this._checkResponse(res))
+    .catch(err => console.log(err))
+  }
+
+}
