@@ -35,7 +35,7 @@ const popupNewAvatar = new PopupWithForm(
   popupSelectors.popupAvatarSelector,
   popupConfig,
   {callbackSubmit: (item) => {
-    popupNewAvatar.renderLoading('val1');
+    popupNewAvatar.renderLoading(true);
     api.setNewAvatar(item.link) // сохраняем новый аватар на сервере
       .then(() => {
         userInfo.setAvatar(item, item.link);
@@ -43,7 +43,7 @@ const popupNewAvatar = new PopupWithForm(
       })
       .catch(err => console.log(err))
       .finally(() => {
-        popupNewAvatar.renderLoading('val2');
+        popupNewAvatar.renderLoading(false);
       });
     }
   });
@@ -53,16 +53,16 @@ popupNewAvatar.setEventListeners();
 const popupProfile = new PopupWithForm(
   popupSelectors.popupEditSelector,
   popupConfig,
-  {callbackSubmit: (ProfileinputValue) => {
-    popupProfile.renderLoading('val1');
-      api.patchProfile(ProfileinputValue)// сохраняем отредактированные данные профиля на сервере
+  {callbackSubmit: (inputValue) => {
+    popupProfile.renderLoading(true);
+      api.patchProfile(inputValue)// сохраняем отредактированные данные профиля на сервере
         .then(()=>{
-          userInfo.setUserInfo(ProfileinputValue);
+          userInfo.setUserInfo(inputValue);
           popupProfile.close();
         })
         .catch(err => console.log(err))
         .finally(() => {
-          popupProfile.renderLoading('val2');
+          popupProfile.renderLoading(false);
         });
     }
   });
@@ -73,7 +73,7 @@ const popupAddCard = new PopupWithForm(
   popupSelectors.popupAddSelector,
   popupConfig,
   {callbackSubmit: (data) => {
-    popupAddCard.renderLoading('val1');
+    popupAddCard.renderLoading(true);
     // debugger;
     api.addNewCard(data)
       .then((res)=>{
@@ -82,7 +82,7 @@ const popupAddCard = new PopupWithForm(
       })
       .catch(err => console.log(err))
       .finally(() => {
-        popupAddCard.renderLoading('val3');
+        popupAddCard.renderLoading(false);
       });
   }}
 );

@@ -63,6 +63,7 @@ export const popupConfig = {
   imageViewSelector: '.popup-image__image',
   imageCaptionSelector: '.popup-image__caption',
   submitSelector: '.popup__btn-save',
+  buttonSubmitLoadText: 'Сохранение...'
 }
 
 export const userInfoConfig = {
