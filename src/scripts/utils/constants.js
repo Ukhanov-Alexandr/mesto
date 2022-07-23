@@ -1,8 +1,6 @@
 //константы для index.js
 export const cardСontainer = document.querySelector('.elements');
 export const popupEdit = document.querySelector(".popup-edit");
-// export const profileName = document.querySelector(".profile__name");
-// export const profileAbout = document.querySelector(".profile__about");
 export const buttonEdit = document.querySelector(".profile__btn_type_edit");
 export const popupFormEdit = popupEdit.querySelector(".popup__form");
 export const inputName = popupEdit.querySelector(".popup__input_type_name");
@@ -19,7 +17,7 @@ export const buttonAvatar = document.querySelector('.profile__btn-edit-avatar');
 export const popupAvatar = document.querySelector('.popup-avatar')
 //тут хранятся экземпляры класса FormValidator
 export const formValidators = {};
-//
+
 export const apiConfig = {
   url: "https://nomoreparties.co/v1/cohort-45",
   headers: {
@@ -63,7 +61,8 @@ export const popupConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   imageViewSelector: '.popup-image__image',
-  imageCaptionSelector: '.popup-image__caption'
+  imageCaptionSelector: '.popup-image__caption',
+  submitSelector: '.popup__btn-save',
 }
 
 export const userInfoConfig = {

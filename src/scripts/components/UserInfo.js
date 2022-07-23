@@ -5,20 +5,14 @@ export default class UserInfo {
     this._profileAvatar = document.querySelector(userInfoConfig.avatarSelector);
   }
 
-  setUserInfo(newUser){
-    this._name.textContent = newUser.name;
-    this._about.textContent = newUser.about;
-    this._userId = newUser._id;
-    // console.log(this._userId)
+  setUserInfo({ name, about, _id }){
+    this._name.textContent = name;
+    this._about.textContent = about;
+    this._userId = _id;
   }
 
-  setAvatar(newUser){
-    this._profileAvatar.src = newUser.avatar;
-    this._profileAvatar.alt = newUser.name;
-  }
-
-  setNewAvatar(newUser){
-    this._profileAvatar.src = newUser.link;
+  setAvatar(newUser, link){
+    this._profileAvatar.src = link;
     this._profileAvatar.alt = newUser.name;
   }
 
@@ -28,7 +22,6 @@ export default class UserInfo {
         about: this._about.textContent,
         userId: this._userId
     }
-    // console.log(userInfo)
     return userInfo
   }
 }

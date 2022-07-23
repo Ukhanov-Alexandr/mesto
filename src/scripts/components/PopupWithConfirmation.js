@@ -15,7 +15,7 @@ export default class PopupWithConfirmation extends Popup {
       evt.preventDefault();
       // console.log(this)
       this._handleSubmitCallback(this);
-      this.close();
+      // this.close();
     });
   }
 }
